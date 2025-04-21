@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import axios from "axios";
+import axios from "axios"; 
+const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-const API_BASE = "http://localhost:8000/api";
+const API_BASE = `${baseUrl}/api`;
 
 export const fetchTransactions = async () => {
   const res = await axios.get(`${API_BASE}/transactions`);

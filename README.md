@@ -59,6 +59,5 @@ npm run dev
 - PUT    /api/transactions/:id
 - DELETE /api/transactions/:id
 
-# Eslint error Fixed
 
 
