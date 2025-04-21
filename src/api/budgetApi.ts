@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const API_BASE = process.env.API_BASE || "http://localhost:8000/api/budgets";
 
 // Fetch budgets for a specific month or all budgets
