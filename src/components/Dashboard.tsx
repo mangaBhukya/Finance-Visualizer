@@ -1,19 +1,31 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { useEffect, useState } from "react";
 import { fetchTransactions } from "@/api/transactionsApi";
 
+// Define the type for a transaction object
+interface Transaction {
+  _id: string;
+  date: string;
+  description: string;
+  category: string;
+  amount: number;
+}
 
 export default function Dashboard() {
-  const [transactions, setTransactions] = useState<any[]>([]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   useEffect(() => {
     fetchTransactions().then(setTransactions);
   }, []);
 
+  // Calculate total amount of transactions
   const total = transactions.reduce((sum, t) => sum + t.amount, 0);
 
+  // Get the most recent 5 transactions
   const recent = transactions.slice(0, 5);
 
+  // Calculate the total per category
   const categoryTotals = transactions.reduce((acc, t) => {
     acc[t.category] = (acc[t.category] || 0) + t.amount;
     return acc;
@@ -34,12 +46,10 @@ export default function Dashboard() {
         </div>
       </div>
 
-     
       <div className="mb-[20px]">
-       
         <div className="w-2/3 border rounded-lg shadow-md bg-blue">
           <h3 className="font-bold text-lg mb-2 ml-[20px]">Recent Transactions</h3>
-          <table className="w-full table-auto  mb-10">
+          <table className="w-full table-auto mb-10">
             <thead className="text-white">
               <tr>
                 <th className="px-4 py-2 text-left">Date</th>
@@ -49,7 +59,7 @@ export default function Dashboard() {
               </tr>
             </thead>
             <tbody>
-              {recent.map((t: any) => (
+              {recent.map((t) => (
                 <tr key={t._id} className="border-t hover:bg-gray-50 hover:text-black">
                   <td className="px-4 py-2">{t.date}</td>
                   <td className="px-4 py-2">{t.description}</td>

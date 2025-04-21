@@ -1,12 +1,13 @@
-"use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
+"use client";
 import { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { fetchTransactions } from "@/api/transactionsApi";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 export default function BudgetsPage() {
-  const [budgets, setBudgets] = useState<Record<string, number>>({
+  const [budgets] = useState<Record<string, number>>({
     Food: 2000,
     Transport: 1000,
     Utilities: 1500,

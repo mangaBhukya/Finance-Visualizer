@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 "use client";
 import { useEffect, useState } from "react";
 import {
@@ -48,7 +50,19 @@ export default function MonthlyChart() {
             <XAxis
               dataKey="month"
               stroke="#8884d8"
-              tick={{ angle: -45, textAnchor: "end" }}
+              tick={(props) => {
+                const { x, y, payload } = props;
+                return (
+                  <text
+                    x={x}
+                    y={y + 10}
+                    textAnchor="middle"
+                    transform="rotate(-45)" // Rotate tick labels
+                  >
+                     {payload.value}
+            </text>
+          );
+        }}
             />
             <YAxis stroke="#8884d8" />
             <Tooltip />

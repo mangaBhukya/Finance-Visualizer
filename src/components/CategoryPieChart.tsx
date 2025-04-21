@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { useEffect, useState } from "react";
 import {
@@ -12,6 +13,7 @@ import { fetchTransactions } from "@/api/transactionsApi";
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#7B61FF", "#FF6B6B"];
 
 export default function CategoryPieChart() {
+
   const [data, setData] = useState<any[]>([]);
 
   

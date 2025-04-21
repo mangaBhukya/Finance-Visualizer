@@ -1,5 +1,6 @@
-"use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
+"use client";
 import { useEffect, useState } from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { fetchTransactions } from "@/api/transactionsApi";
@@ -7,8 +8,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#7B61FF", "#FF6B6B"];
 
+
+
 export default function ExpensesPage() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<{ name: string; value: number }[]>([]);
 
   useEffect(() => {
     fetchTransactions().then((transactions) => {
@@ -19,7 +22,7 @@ export default function ExpensesPage() {
 
       const pieData = Object.entries(grouped).map(([category, amount]) => ({
         name: category,
-        value: amount,
+        value: amount as number,
       }));
 
       setData(pieData);

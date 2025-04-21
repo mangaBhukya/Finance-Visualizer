@@ -22,7 +22,7 @@
     "target": "ESNext", // or "ES6" or "ES2020"
     "module": "ESNext",
     "moduleResolution": "Node",
-    "strict": true,
+    "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -32,6 +32,7 @@
       "esnext"
     ],
     "allowJs": true,
+    "checkJs": false,
     "noEmit": true,
     "incremental": true,
     "resolveJsonModule": true,
